@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fort lake</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="icon" href="Travely-logo.png" type="image/icon type">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  
+  <style>
+    /* Reset and Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Custom focus style */
+*:focus {
+    outline: 2px solid #ffffff82;  /* Custom color */
+    box-shadow: none;
+}
+
+
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background-color: #000000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 30px;
+      background-color: rgb(0, 0, 0) ;
+      transition: background 0.1s ease;
+    }
+
+    .header.scrolled {
+      background: rgba(0, 0, 0, 0.9);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav a {
+      font-size: 15px;
+      font-weight: 500;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+
+    .nav a:hover {
+      color: #220751;
+    }
+
+    /* Hero Section */
+    /* Hero Section */
+.hero {
+  height: 100vh;
+  background: 
+    linear-gradient(to bottom, rgba(0, 0, 0, 0) 1%, rgba(0, 0, 0, 0.359) 50%, rgba(0, 0, 0, 1) 100%), 
+    linear-gradient(to left, rgba(0, 0, 0, 0) 1%, rgba(0, 0, 0, 0.359) 70%, rgba(0, 0, 0, 1) 100%),
+    linear-gradient(to top, rgba(0, 0, 0, 0) 1%, rgba(0, 0, 0, 0.359) 50%, rgba(0, 0, 0, 1) 100%),
+    url('fort-lake.jpg') center/cover no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 50px 40px 100px;
+  position: relative;
+  transition: background 2s ease-in; /* Transition for background image change */
+}
+
+/* Add fade-out and fade-in class for smoother background changes */
+.hero.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-ing;
+}
+
+.hero.fade-in {
+  
+  opacity: 1;
+  transition: opacity 1s ease-in;
+}
+
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .hero-description {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      height: 3rem;
+    }
+
+    .hero-btn {
+      padding: 15px 30px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      transition: transform 0.3s, background-color 0.3s;
+    }
+
+    .hero-btn.play {
+      background-color: #6407c7;
+      color: #fff;
+    }
+
+    .hero-btn.more-info {
+      background-color: rgba(0, 0, 0, 0.42);
+      color: #fff;
+    }
+
+    .hero-btn:hover {
+      transform: scale(1.05);
+    }
+    .hero p{
+      font-family: Arial, sans-serif;
+      color: #888888;
+    }
+
+    /* Movie Section */
+    .movie-section {
+      padding: 60px 30px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .movie-slider {
+      display: flex;
+      overflow-x: auto;
+      gap: 15px;
+      scroll-behavior:x smooth; /* Smooth scroll */
+      padding: 10px 0;
+      white-space: nowrap; /* Prevent wrapping */
+    }
+
+    .movie-slider {
+      display: none;
+    }
+
+    .movie-card {
+      flex: 0 0 auto;
+      width: 180px;
+      height: 270px;
+      background-color: #222;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .movie-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .movie-card:hover {
+      transform: scale(1.1);
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.8);
+    }
+
+    .movie-title {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .modal-content {
+      position: relative;
+      background: #000;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .modal-content img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      color: #fff;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      color: #220565;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 30px;
+      text-align: center;
+      background-color: #000;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    /* Nav Bar */
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+}
+
+a:hover {
+    color: #6120b7;
+}
+
+header {
+    position: relative;
+    padding: 0 2rem;
+}
+
+.navbar {
+    width: 100%;
+    height: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar .nav ul {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.navbar .menu {
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+.navbar .highlight {
+    display: block;
+    margin-left: 0;
+    margin-right: 1rem;
+}
+
+.highlight {
+    background: linear-gradient(160deg, #6407c7, rgb(5, 5, 5)) ;
+    color: #fff;
+    padding: 0.6rem 3rem;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: scale 0.2s ease;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.highlight:hover {
+    transform: scale(1.05);
+    color: #ffffff;
+}
+
+.highlight:active {
+    transform: scale(0.95);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 60px;
+    width: 250px;
+    height: 0;
+    background: rgba(0, 0, 0, 0.439);
+    backdrop-filter: blur(15px);
+    border-radius: 7px;
+    overflow: hidden;
+    display: none;
+}
+
+.dropdown-menu li {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown-menu .highlight {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+
+.dropdown-menu.open {
+    height: 41rem;
+    width: 100%;
+    max-width: 100%;
+    left: 0; 
+    right: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  background-color: transparent;
+}
+
+
+
+
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+  transform: translateY(-50%);
+}
+
+#scrollLeft {
+  left: 10px;
+}
+
+#scrollRight {
+  right: 10px;
+}
+
+.movie-card {
+  flex: 0 0 auto; /* Prevent wrapping */
+  width: 180px;
+  height: 270px;
+  background-color: #222;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.movie-card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.8);
+}
+
+.movie-title {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+/* Nav Bar Ends */
+
+/* Responsive */
+@media (max-width: 400px) {
+  #modalImage{
+      width: 20rem;
+      height: 30rem;
+      border-radius: 10px;
+    }
+
+  
+}
+
+
+
+
+
+@media (max-width: 992px) {
+    .navbar .nav ul {
+        display: none;
+    }
+    body{
+        overflow-x: hidden;
+    }
+    
+    .navbar .menu {
+        display: flex;
+    }
+    
+    .navbar .menu i {
+        display: inline-block;
+    }
+    
+    .navbar .highlight {
+        display: none;
+    }
+    
+    .dropdown-menu {
+        display: block;
+    }
+    
+    
+    .dropdown-menu .highlight {
+        display: block;
+        margin-top: 1rem;
+    }
+}
+/* Footer */
+footer {
+    background-color: #0b0b0b;
+    color: #ccc;
+    padding: 1rem;
+    margin-top: 90px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+
+   
+
+
+   /* Information Section */
+.info-section {
+  padding: 60px 20px 0px 40px;
+  background-color: #000; 
+  color: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; 
+  text-align: left; 
+  min-height: 50vh; 
+}
+
+.info-content {
+  max-width: 800px;
+  margin: 0;
+  animation: fadeInUp 1.5s ease-in-out;
+}
+
+.info-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.info-description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #888888;
+}
+
+
+   /* architecture Section */
+   .architecture-section {
+  padding: 60px 20px 0px 40px;
+  background-color: #000; 
+  color: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; 
+  text-align: left; 
+  min-height: 50vh; 
+}
+
+.architecture-content {
+  max-width: 800px;
+  margin: 0;
+  animation: fadeInUp 1.5s ease-in-out;
+}
+
+.architecture-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.architecture-description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #949494;
+}
+
+/* Styles for small images */
+.small-img-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 19px;
+  padding: 0px 0px 40px; /* Spacing from hero-description */
+  flex-wrap: wrap; /* Allow images to wrap on smaller screens */
+}
+
+.small-img-container img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.small-img-container img:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive adjustments for small screens */
+@media (max-width: 500px) {
+  .small-img-container {
+    flex-direction: row;
+    align-items: center; /* Center the images for smaller screens */
+    gap: 20px;
+  }
+}
+
+/* Modal Styles */
+.modal {
+  display: none; /* Initially hidden */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  background: #00000093;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 10px;
+}
+
+.close-btn {
+  position: absolute;
+  top: -20px;
+  right: -5px;
+  font-size: 4rem;
+  color: #fff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #6120b7;
+}
+
+/* Animation for Modal */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal.show {
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+/* History Section */
+.history-section {
+    padding: 60px 40px;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+    min-height: 50vh;
+}
+
+.history-content {
+    max-width: 800px;
+    margin: 0;
+    animation: fadeInUp 1.5s ease-in-out;
+}
+
+.history-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.history-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #949494;
+}
+
+
+
+
+
+
+
+
+/* Hero section  styles */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-title, .hero-description {
+  opacity: 0; 
+  transform: translateY(20px); 
+  animation: easeInUp 1s forwards; 
+}
+
+/* Animation  for the "ease-in-up" effect */
+@keyframes easeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); 
+  }
+}
+
+
+.hero-title {
+  animation-delay: 0.2s;
+  margin-top: 20; 
+}
+
+.hero-description {
+  animation-delay: 0.5s;
+}
+
+/* Hero content images */
+.small-img-container img {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: easeInUp 1s forwards;
+}
+
+.small-img-container img:nth-child(1) {
+  animation-delay: 0.7s;
+}
+
+.small-img-container img:nth-child(2) {
+  animation-delay: 0.9s;
+}
+
+.small-img-container img:nth-child(3) {
+  animation-delay: 1.1s;
+}
+
+.small-img-container img:nth-child(4) {
+  animation-delay: 1.3s;
+}
+
+/* Buttons */
+.hero-buttons .hero-btn {
+  opacity: 0;
+  border: rgba(255, 255, 255, 0.39) 0.5px solid;
+  transform: translateY(20px);
+  animation: easeInUp 1s forwards;
+  animation-delay: 1.5s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Basic button styling */
+.hero-buttons {
+    display: flex; /* Keeps buttons centered horizontally */
+    
+}
+
+.hero-btn {
+    padding: 12px 25px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.hero-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Pop-up styling */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(25, 25, 25, 0.752);
+    animation: fadeIn 0.5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Join Pop-up Design */
+.join-popup .popup-content {
+    background-color: #030303e0;
+    padding: 100px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 120px 1px rgba(0, 0, 0, 0.2);
+    animation: zoomIn 0.5s ease-out;
+    text-align: center;
+}
+
+.join-popup .popup-content h2 {
+    font-size: 24px;
+    color: #dfdfdf;
+    margin-bottom: 20px;
+}
+
+.join-popup .popup-content p {
+    font-size: 16px;
+    color: #dfdfdf;
+    margin-bottom: 30px;
+}
+
+.join-popup .popup-content .cta-btn {
+    padding: 12px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #28a745;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.join-popup .popup-content .cta-btn:hover {
+    background-color: #218838;
+}
+
+/* More Info Pop-up Design */
+.more-info-popup .popup-content {
+    background-color: #030303e0;
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    animation: fadeUp 0.5s ease-out;
+    text-align: left;
+}
+
+.more-info-popup .popup-content h2 {
+    font-size: 26px;
+    color: #e4e4e4;
+    margin-bottom: 15px;
+}
+
+.more-info-popup .popup-content p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.more-info-popup .popup-content .close-info-btn {
+    background-color: #f44336;
+    color: white;
+    font-size: 18px;
+    padding: 12px 25px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.more-info-popup .popup-content .close-info-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Pop-up animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Close button inside pop-up */
+.close-btn {
+    color: #aaa;
+    font-size: 50px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+/* Responsive styling */
+@media (max-width: 600px) {
+    .hero-btn {
+        padding: 10px 18px;
+        font-size: 14px;
+    }
+
+    .join-popup .popup-content,
+    .more-info-popup .popup-content {
+        width: 90%;
+        padding: 40px;
+    }
+
+    .join-popup .popup-content h2,
+    .more-info-popup .popup-content h2 {
+        font-size: 20px;
+    }
+
+    .join-popup .popup-content .cta-btn,
+    .more-info-popup .popup-content .close-info-btn {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
+
+
+  </style>
+</head>
+<body>
+
+
+       <!-- Header -->
+           
+       <header>
+        <div class="navbar">
+            <img src="Travely-logo.png" style="height: 4rem ;"  alt="">
+            <div class="logo">
+                
+                <a href="#" style="margin: -3rem;">Travely</a>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Hotels</a></li>
+                    <li><a href="#">Restaurants</a></li>
+                    <li><a href="Bio-web - Copy/index.html">About-Us</a></li>
+                </ul>
+                <div class="menu"><i class="fa-solid fa-bars"></i></div>
+            </div>
+            <a href="#" class="highlight">Sign-in</a>
+            <div class="dropdown-menu">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Hotels</a></li>
+                    <li><a href="#">Restaurants</a></li>
+                    <li><a href="Bio-web - Copy/index.html">About-Us</a></li>
+                    <li><a href="#" class="highlight">Sign-in</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+  <!-- Hero Section -->
+  <section class="hero" >
+    <div class="main">
+    <div class="hero-content">
+      <h1 class="hero-title" style="margin-top: 10rem; ">Fort lake</h1>
+      <p class="hero-description">Located right next to the Belgaum Fort, lies a beautiful<br> lake also known as Kote Kore or Kote Keri. Location: VG8H+43C,<br> Shivaji Nagar, Belagavi, Karnataka 590016</p>
+      
+      <div class="small-img-container">
+        
+        <img src="fort-lake.jpg" alt="Image 3">
+        <img src="fort-lake1.jfif" alt="">
+        <img src="fort-lake.jpg" alt="">
+        <img src="fort-lake1.jfif" alt="Image 4">
+      </div>
+      
+      <div class="hero-buttons">
+        <button class="hero-btn play">Join</button>
+        <button class="hero-btn more-info"> More Info</button>
+    </div>
+    
+    <!-- Pop-up for Join Button -->
+    <div class="popup join-popup">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <h2>Join Travely</h2>
+            <h3><a href="https://whatsapp.com/channel/0029Vb47qmR1iUxei5G5Cf3Z"> Whatsapp Channel</a></h3>
+        </div>
+    </div>
+    
+    <!-- Pop-up for More Info Button -->
+    <div class="popup more-info-popup">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <h2>More Info Pop-up</h2>
+            <p>Details for More Info go here.</p>
+        </div>
+    </div>
+    </div>
+    </div>
+  </section>
+  
+
+ 
+
+
+  <!-- architecture -->
+  <section class="architecture-section">
+    
+    <div class="architecture-content">
+      
+      <h2 class="architecture-title" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="200">OverView</h2>
+     
+      <p class="architecture-description" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="200">
+        Nestled right next to the historic Belgaum Fort, Kote Kore Lake, also known as Kote Keri, is a picturesque and tranquil destination ideal for a family getaway. The lake is set amidst a scenic backdrop of dense, lush forests, creating a serene atmosphere perfect for those seeking a peaceful retreat. Its well-maintained surroundings provide a perfect escape from the hustle and bustle of daily life, offering a blend of natural beauty and calm.
+
+        The lake’s charm is accentuated by its beautiful waters and the greenery that surrounds it, making it a must-visit spot for nature lovers and families. Whether you're looking to take a leisurely stroll around the lake or simply relax and enjoy the view, this location provides the perfect setting for quality time with loved ones.
+
+      </p>
+      
+    </div>    
+  </section>
+
+
+  <!-- History Section -->
+<section class="history-section">
+  <div class="history-content">
+      <h2 class="history-title" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="200">What to Expect:</h2>
+      <p class="history-description" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="200">
+        
+
+        <br>Things to Do at Kote Kore Lake:
+        
+        <br>Leisurely Walks: Take your time to walk around the serene lake, soaking in the peaceful surroundings and enjoying the fresh air. The walk around the lake offers beautiful views of the water and the lush greenery that surrounds it, making it a perfect spot for relaxation.
+        
+        <br>Watch the Ducks: The lake is home to several ducks, adding to the charm of the location. You can watch them glide across the water, making for a calm and delightful experience for both children and adults.
+        
+        <br>Exciting Activities: If you’re in the mood for some adventure, Kote Kore Lake offers various fun activities. You can enjoy pedal boating or speed boating on the lake’s calm waters, or try out other joy rides available on-site. These activities make for a perfect combination of relaxation and fun.
+        
+        <br>Tips for Visiting:
+        
+        <br>Open Hours: The lake is open to visitors every day from 4:30 p.m. to 8:30 p.m., offering an evening escape with beautiful sunset views over the water.
+        
+        <br>Entry Fee: There’s no entry fee to access the lake, making it an affordable spot for everyone to enjoy. However, you will need to pay a fee if you decide to participate in any of the available activities.
+        
+        <br>The Indian Flag: One of the most striking features of the lake is the giant 110-meter tall Indian flag, which was installed in 2018. It proudly stands on the lake’s banks and has become a major point of interest for visitors, adding to the charm of the location and making it a great spot for photo opportunities.
+      </p>
+  </div>
+</section>
+
+
+  <div class="modal">
+    <div class="modal-content">
+      <img id="modalImage" src="" alt="Modal Image">
+      <button class="close-btn">&times;</button>
+    </div>
+  </div>
+  
+
+
+   <!-- Footer -->
+   <footer>
+    <p>&copy; 2024 Travely. <br> Developed by Kishan Miskin<br>All Rights Reserved.</p>
+</footer>
+
+
+ 
+
+ 
+    
+
+ 
+</body>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+
+
+  // Initialize AOS library with custom settings
+  AOS.init({
+      offset: 200,  // Scroll trigger offset (when the element is 200px from the top)
+      duration: 1000,  // Duration of the animation in milliseconds
+      easing: 'ease-in-out',  // Easing function for the animation
+      delay: 0  // Optional: delay before animation starts
+    });
+  
+
+     // Nav Bar
+
+const toggleBtn = document.querySelector('.menu');
+const toggleBtnIcon = toggleBtn.querySelector('i');
+const dropDownMenu = document.querySelector('.dropdown-menu');
+
+toggleBtn.onclick = function () {
+dropDownMenu.classList.toggle('open');
+const isOpen = dropDownMenu.classList.contains('open');
+toggleBtnIcon.classList.toggle('fa-bars', !isOpen);
+toggleBtnIcon.classList.toggle('fa-xmark', isOpen);
+};
+
+// Nav Bar Ends
+const smallImages = document.querySelectorAll('.small-img-container img');
+const modal = document.querySelector('.modal');
+const modalImage = document.querySelector('#modalImage');
+const closeButton = document.querySelector('.close-btn');
+
+smallImages.forEach(img => {
+  img.addEventListener('click', () => {
+    modalImage.src = img.src;
+    modal.classList.add('show'); // Add animation class
+    modal.style.display = 'flex';
+  });
+});
+
+closeButton.addEventListener('click', () => {
+  modal.classList.remove('show'); // Remove animation class
+  setTimeout(() => {
+    modal.style.display = 'none';
+  }, 300); // Match the animation duration
+});
+
+
+
+
+
+// Get buttons and pop-ups
+const joinBtn = document.querySelector('.hero-btn.play');
+const moreInfoBtn = document.querySelector('.hero-btn.more-info');
+const joinPopup = document.querySelector('.join-popup');
+const moreInfoPopup = document.querySelector('.more-info-popup');
+const closeBtns = document.querySelectorAll('.close-btn');
+
+// Ensure pop-ups are hidden by default
+joinPopup.style.display = 'none';
+moreInfoPopup.style.display = 'none';
+
+// Function to open respective pop-up
+joinBtn.addEventListener('click', () => {
+    joinPopup.style.display = 'flex';  // Show the join pop-up
+});
+moreInfoBtn.addEventListener('click', () => {
+    moreInfoPopup.style.display = 'flex';  // Show the more info pop-up
+});
+
+// Close pop-ups when the user clicks the close button
+closeBtns.forEach(closeBtn => {
+    closeBtn.addEventListener('click', () => {
+        joinPopup.style.display = 'none';  // Hide join pop-up
+        moreInfoPopup.style.display = 'none';  // Hide more info pop-up
+    });
+});
+
+// Close pop-up if user clicks outside of the pop-up content
+window.addEventListener('click', (e) => {
+    if (e.target === joinPopup) {
+        joinPopup.style.display = 'none';  // Hide join pop-up
+    } else if (e.target === moreInfoPopup) {
+        moreInfoPopup.style.display = 'none';  // Hide more info pop-up
+    }
+});
+
+
+</script>
+</html>
